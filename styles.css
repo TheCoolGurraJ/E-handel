@@ -1,0 +1,26 @@
+/* Default height for small devices */
+#intro-example {
+    height: 400px;
+    background-image: url('cars.gif');
+    background-size: cover;
+    background-repeat: repeat;
+    background-position: center;
+    height: 100%;
+  }
+
+  /* Height for devices larger than 992px */
+  @media (min-width: 992px) {
+    #intro-example {
+      height: 600px;
+    }
+  }
+
+body,html{
+    height: 100%;
+    overflow: hidden;
+}
+
+h1{
+    font-style: oblique;
+    font-family: fantasy;
+}

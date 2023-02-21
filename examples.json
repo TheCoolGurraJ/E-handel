@@ -1,0 +1,24 @@
+{
+    "clothing": [
+        {
+            "type": "jeans",
+            "price": "200"
+        },
+        {
+            "type": "jeans",
+            "price": "200"
+        },
+        {
+            "type": "hoodie",
+            "price": "300"
+        },
+        {
+            "type": "hoodie",
+            "price": "300"
+        },
+        {
+            "type": "sweater",
+            "price": "500"
+        }
+    ]
+}
