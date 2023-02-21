@@ -2,23 +2,63 @@
     "clothing": [
         {
             "type": "jeans",
-            "price": "200"
+            "price": "200",
+            "desc": "Ett par schyssta jeans!",
+            "image": "jeans.jpg"
         },
         {
             "type": "jeans",
-            "price": "200"
+            "price": "200",
+            "desc": "Ett par schyssta jeans!",
+            "image": "jeans.jpg"
         },
         {
             "type": "hoodie",
-            "price": "300"
+            "price": "300",
+            "desc": "Hoodie med snöre",
+            "image": "hoodie1.jpeg"
         },
         {
             "type": "hoodie",
-            "price": "300"
+            "price": "300",
+            "desc": "Hoodie med snöre",
+            "image": "hoodie1.jpeg"
         },
         {
             "type": "sweater",
-            "price": "500"
+            "price": "500",
+            "desc": "Stilig tjocktröja",
+            "image": "sweater.webp"
+        },
+        {
+            "type": "sweater",
+            "price": "500",
+            "desc": "Stilig tjocktröja",
+            "image": "sweater.webp"
+        },
+        {
+            "type": "sweater",
+            "price": "500",
+            "desc": "Stilig tjocktröja",
+            "image": "sweater.webp"
+        },
+        {
+            "type": "sweater",
+            "price": "500",
+            "desc": "Stilig tjocktröja",
+            "image": "sweater.webp"
+        },
+        {
+            "type": "sweater",
+            "price": "500",
+            "desc": "Stilig tjocktröja",
+            "image": "sweater.webp"
+        },
+        {
+            "type": "sweater",
+            "price": "500",
+            "desc": "Stilig tjocktröja",
+            "image": "sweater.webp"
         }
     ]
 }

@@ -17,6 +17,7 @@ a:hover{
 
 .card{
     width: 16rem !important;
+    
 }
 
 .card-text{
@@ -56,9 +57,13 @@ p{
     box-shadow: 0 0 5px rgba(81, 203, 238, 1);
 
     border: 3px solid rgba(81, 203, 238, 1);
+    margin: -3px;
 
-    margin: 4px;
+    cursor: pointer;
+}
 
+.nav-link:hover{
+    cursor: pointer;
 }
 
 
