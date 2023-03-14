@@ -75,8 +75,10 @@
         <div class="col-3">
           <div class="card text-white bg-dark">
             <img class="card-img-top" src="hoodie1.jpeg" alt="Title">
+            <span class="position-absolute top-0 text-dark m-3">M</span>
             <div class="card-body">
-              <p class="card-text">Hoodie med snöre</p>
+              <p class="card-text float-start ms-2">Hoodie med snöre</p>
+              <p class="card-text float-end">250 kr</p>
             </div>
           </div>
         </div>
@@ -126,8 +128,7 @@
       const data = await response.json();
 
       clothing = data.clothing;
-      console.log(clothing);
-
+      //LoadArticles('hoodie');
 
     }
     
@@ -149,6 +150,10 @@
           let col3 = document.createElement('div')
           col3.className = "col-3"
 
+          let size = document.createElement('span')
+          size.className = "position-absolute top-0 text-dark m-3"
+          size.innerHTML = element.size;
+
           let card = document.createElement('div')
           card.className = "card text-white bg-dark"
 
@@ -161,8 +166,12 @@
           cardbody.className = "card-body"
 
           let cardtext = document.createElement('p')
-          cardtext.className = "card-text";
+          cardtext.className = "card-text float-start ms-2";
           cardtext.innerText = element.desc; 
+
+          let price = document.createElement('p')
+          price.className = "card-text float-end";
+          price.innerText = element.price + " kr"; 
 
           if(row.children >= 4)
           {
@@ -175,7 +184,10 @@
           col3.appendChild(card);
           card.appendChild(img);
           card.appendChild(cardbody);
+          card.appendChild(size);
           cardbody.appendChild(cardtext);
+          cardbody.appendChild(price);
+
         }
       });
     }

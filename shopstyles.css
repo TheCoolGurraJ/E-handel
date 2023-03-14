@@ -1,9 +1,17 @@
+body {
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+}
+body::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
+}
+
 .branding{
     height: 50px;
     justify-content: center;
 }
 
-h1,a,p{
+h1,a,p,span{
     color: white;
     font-family: fantasy;
     font-style: oblique;

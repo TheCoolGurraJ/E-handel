@@ -4,61 +4,71 @@
             "type": "jeans",
             "price": "200",
             "desc": "Ett par schyssta jeans!",
-            "image": "jeans.jpg"
+            "image": "jeans.jpg",
+            "size": "30W:30L"
         },
         {
             "type": "jeans",
             "price": "200",
             "desc": "Ett par schyssta jeans!",
-            "image": "jeans.jpg"
+            "image": "jeans.jpg",
+            "size": "34W:28L"
         },
         {
             "type": "hoodie",
             "price": "300",
             "desc": "Hoodie med snöre",
-            "image": "hoodie1.jpeg"
+            "image": "hoodie1.jpeg",
+            "size": "XS"
         },
         {
             "type": "hoodie",
             "price": "300",
             "desc": "Hoodie med snöre",
-            "image": "hoodie1.jpeg"
+            "image": "hoodie1.jpeg",
+            "size": "M"
         },
         {
             "type": "sweater",
             "price": "500",
             "desc": "Stilig tjocktröja",
-            "image": "sweater.webp"
+            "image": "sweater.webp",
+            "size": "L"
         },
         {
             "type": "sweater",
             "price": "500",
             "desc": "Stilig tjocktröja",
-            "image": "sweater.webp"
+            "image": "sweater.webp",
+            "size": "XXL"
         },
         {
             "type": "sweater",
             "price": "500",
             "desc": "Stilig tjocktröja",
-            "image": "sweater.webp"
+            "image": "sweater.webp",
+            "size": "S"
         },
         {
             "type": "sweater",
             "price": "500",
             "desc": "Stilig tjocktröja",
-            "image": "sweater.webp"
+            "image": "sweater.webp",
+            "size": "M"
         },
         {
             "type": "sweater",
             "price": "500",
             "desc": "Stilig tjocktröja",
-            "image": "sweater.webp"
+            "image": "sweater.webp",
+            "size": "XL"
         },
         {
             "type": "sweater",
             "price": "500",
             "desc": "Stilig tjocktröja",
-            "image": "sweater.webp"
+            "image": "sweater.webp",
+            "size": "L"
         }
     ]
 }
