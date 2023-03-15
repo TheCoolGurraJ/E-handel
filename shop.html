@@ -47,63 +47,55 @@
         <h1 class="offcanvas-title">Varukorgen</h1>
       </div>
       <div class="offcanvas-body">
-        <div class="container m-0 p-2">
-          <div class="row p-2">
-            <div class="col-3">
-             <img src="hoodie1.jpeg" class="img-fluid rounded" alt="">
-            </div> 
-            <div class="col d-flex align-items-center">
-              <p>Hoodie med snöre - 100 kr</p>
-            </div>
-          </div>
-          <div class="row p-2">
-            <div class="col-3">
-             <img src="hoodie1.jpeg" class="img-fluid rounded" alt="">
-            </div> 
-          </div>
-          <div class="row p-2">
+        <div class="container m-0 p-2" id="cart-container">
+          <div class="row p-2" id="cart-total">
             <div class="col">
-              <p>Totalt: x antal kronor</p>
+              <p id="total-price-text">Totalt:</p>
             </div>
         </div>
         </div>
       </div>
     </div>
 
-    <div class="container m-5 p-0" id="card-container">
-      <div class="row gy-3">
-        <div class="col-3">
-          <div class="card text-white bg-dark">
-            <img class="card-img-top" src="hoodie1.jpeg" alt="Title">
-            <span class="position-absolute top-0 text-dark m-3">M</span>
-            <div class="card-body">
-              <p class="card-text float-start ms-2">Hoodie med snöre</p>
-              <p class="card-text float-end">250 kr</p>
+    <div class="container p-0">
+      <div class="row m-3 p-2">
+        <button class="sortbtn p-0 btn"><img class="img-fluid" src="sort-down.png" alt=""></button>
+      </div>
+      <div class="row m-3 p-0" id="card-container">
+        <div class="row gy-3">
+          <div class="col-3">
+            <div class="card text-white bg-dark">
+              <img class="card-img-top" src="hoodie1.jpeg" alt="Title">
+              <span class="position-absolute top-0 text-dark m-3">M</span>
+              <div class="card-body">
+                <p class="card-text float-start ms-2">Hoodie med snöre</p>
+                <p class="card-text float-end">250 kr</p>
+              </div>
             </div>
           </div>
+          <div class="col-3">
+            <div class="card text-white bg-dark">
+              <img class="card-img-top" src="hoodie1.jpeg" alt="Title">
+              <div class="card-body">
+                <p class="card-text">Hoodie med snöre</p>
+              </div>
+            </div>        </div>
+          <div class="col-3">
+            <div class="card text-white bg-dark">
+              <img class="card-img-top" src="hoodie1.jpeg" alt="Title">
+              <div class="card-body">
+                <p class="card-text">Hoodie med snöre</p>
+              </div>
+            </div>        </div>
+          <div class="col-3">
+            <div class="card text-white bg-dark">
+              <img class="card-img-top" src="hoodie1.jpeg" alt="Title">
+              <div class="card-body">
+                <p class="card-text">Hoodie med snöre</p>
+              </div>
+            </div>                                                                                        </div>
+      
         </div>
-        <div class="col-3">
-          <div class="card text-white bg-dark">
-            <img class="card-img-top" src="hoodie1.jpeg" alt="Title">
-            <div class="card-body">
-              <p class="card-text">Hoodie med snöre</p>
-            </div>
-          </div>        </div>
-        <div class="col-3">
-          <div class="card text-white bg-dark">
-            <img class="card-img-top" src="hoodie1.jpeg" alt="Title">
-            <div class="card-body">
-              <p class="card-text">Hoodie med snöre</p>
-            </div>
-          </div>        </div>
-        <div class="col-3">
-          <div class="card text-white bg-dark">
-            <img class="card-img-top" src="hoodie1.jpeg" alt="Title">
-            <div class="card-body">
-              <p class="card-text">Hoodie med snöre</p>
-            </div>
-          </div>        </div>
-        
       </div>
     </div>
   </main>
@@ -121,6 +113,7 @@
 
   <script>
     var clothing;
+    var totalprice = 0;
 
     async function GetAllExamples()
     {
@@ -128,7 +121,7 @@
       const data = await response.json();
 
       clothing = data.clothing;
-      //LoadArticles('hoodie');
+      LoadArticles('hoodie');
 
     }
     
@@ -156,6 +149,8 @@
 
           let card = document.createElement('div')
           card.className = "card text-white bg-dark"
+          card.onclick = function() { AddToCart(element); }
+
 
           let img = document.createElement('img')
           img.className = "card-img-top"
@@ -187,11 +182,54 @@
           card.appendChild(size);
           cardbody.appendChild(cardtext);
           cardbody.appendChild(price);
-
         }
       });
     }
 
+    function AddToCart(element)
+    {
+      /*
+      <div class="row p-2">
+        <div class="col-3">
+          <img src="hoodie1.jpeg" class="img-fluid rounded" alt="">
+        </div> 
+        <div class="col d-flex align-items-center">
+          <p>Hoodie med snöre - 100 kr</p>
+        </div>
+      </div>
+      */
+
+      let row = document.createElement('div');
+      row.className = "row p-2";
+
+      let col = document.createElement('div');
+      col.className = "col-3";
+
+      let itemimg = document.createElement('img');
+      itemimg.className = "img-fluid rounded"
+      itemimg.alt = element.desc;
+      itemimg.src = element.image
+
+      let textcon = document.createElement('div');
+      textcon.className = "col d-flex align-items-center";
+
+      let itemtext = document.createElement('p');
+      itemtext.innerText = element.desc + " - " + element.price +"kr";
+      let total = document.getElementById('cart-total')
+      document.getElementById('cart-container').insertBefore(row, total)
+      row.appendChild(col)
+      row.appendChild(textcon)
+      col.appendChild(itemimg)
+      textcon.appendChild(itemtext)
+
+      UpdateTotal(element.price)
+    }
+
+    function UpdateTotal(price)
+    {
+      totalprice += parseInt(price)
+      document.getElementById('total-price-text').innerHTML = "Totalt: " + totalprice + "kr"
+    }
 
   </script>
 </body>

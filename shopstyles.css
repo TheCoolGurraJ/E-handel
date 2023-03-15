@@ -18,6 +18,12 @@ h1,a,p,span{
     text-decoration: none;
 }
 
+.sortbtn{
+    height: 32px;
+    width: 32px;
+    border: 1.5px solid black;
+}
+
 a:hover{
     color: white;
     opacity: 50%;
