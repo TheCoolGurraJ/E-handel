@@ -59,7 +59,7 @@
 
     <div class="container p-0">
       <div class="row m-3 p-2">
-        <button class="sortbtn p-0 btn"><img class="img-fluid" src="sort-down.png" alt=""></button>
+        <button class="sortbtn p-0 btn" onclick="SortItemsBySize()"><img class="img-fluid" src="sort-down.png" alt=""></button>
       </div>
       <div class="row m-3 p-0" id="card-container">
         <div class="row gy-3">
@@ -114,6 +114,7 @@
   <script>
     var clothing;
     var totalprice = 0;
+    var currentType;
 
     async function GetAllExamples()
     {
@@ -127,6 +128,7 @@
     
     function LoadArticles(type)
     {
+      currentType = type;
       cardcontainer = document.getElementById('card-container');
 
       cardcontainer.innerHTML = '';
@@ -139,65 +141,88 @@
       clothing.forEach(element => {
         if(element.type == type)
         {
-
-          let col3 = document.createElement('div')
-          col3.className = "col-3"
-
-          let size = document.createElement('span')
-          size.className = "position-absolute top-0 text-dark m-3"
-          size.innerHTML = element.size;
-
-          let card = document.createElement('div')
-          card.className = "card text-white bg-dark"
-          card.onclick = function() { AddToCart(element); }
-
-
-          let img = document.createElement('img')
-          img.className = "card-img-top"
-          img.alt = type;
-          img.src = element.image;
-
-          let cardbody = document.createElement('div')
-          cardbody.className = "card-body"
-
-          let cardtext = document.createElement('p')
-          cardtext.className = "card-text float-start ms-2";
-          cardtext.innerText = element.desc; 
-
-          let price = document.createElement('p')
-          price.className = "card-text float-end";
-          price.innerText = element.price + " kr"; 
-
-          if(row.children >= 4)
-          {
-            row = document.createElement('div');
-            row.className = "row gy-3";
-            cardcontainer.appendChild(row);
-          }
-
-          row.appendChild(col3);
-          col3.appendChild(card);
-          card.appendChild(img);
-          card.appendChild(cardbody);
-          card.appendChild(size);
-          cardbody.appendChild(cardtext);
-          cardbody.appendChild(price);
+          DisplayItem(element, type)
         }
       });
     }
 
+    function DisplayItem(element, type)
+    {
+
+      let col3 = document.createElement('div')
+      col3.className = "col-3"
+
+      let size = document.createElement('span')
+      size.className = "position-absolute top-0 text-dark m-3"
+      size.innerHTML = element.size;
+
+      let card = document.createElement('div')
+      card.className = "card text-white bg-dark"
+      card.onclick = function() { AddToCart(element); }
+
+
+      let img = document.createElement('img')
+      img.className = "card-img-top"
+      img.alt = type;
+      img.src = element.image;
+
+      let cardbody = document.createElement('div')
+      cardbody.className = "card-body"
+
+      let cardtext = document.createElement('p')
+      cardtext.className = "card-text float-start ms-2";
+      cardtext.innerText = element.desc; 
+
+      let price = document.createElement('p')
+      price.className = "card-text float-end";
+      price.innerText = element.price + " kr"; 
+
+      if(row.children >= 4)
+      {
+        row = document.createElement('div');
+        row.className = "row gy-3";
+        cardcontainer.appendChild(row);
+      }
+
+      row.appendChild(col3);
+      col3.appendChild(card);
+      card.appendChild(img);
+      card.appendChild(cardbody);
+      card.appendChild(size);
+      cardbody.appendChild(cardtext);
+      cardbody.appendChild(price);
+
+    }
+
+    function SortItemsBySize()
+    {
+      cardcontainer.innerHTML = "";
+      sorted = clothing.sort(DynamicSort("size"))
+      console.log(sorted);
+
+      sorted.forEach(element => {
+        if(element.type == currentType)
+        {
+          DisplayItem(element, currentType)
+        }
+      });
+    }
+
+    function DynamicSort(property) {
+    var sortOrder = 1;
+    if(property[0] === "-") {
+        sortOrder = -1;
+        property = property.substr(1);
+    }
+    return function (a,b) {
+        
+        var result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
+        return result * sortOrder;
+    }
+}
+
     function AddToCart(element)
     {
-      /*
-      <div class="row p-2">
-        <div class="col-3">
-          <img src="hoodie1.jpeg" class="img-fluid rounded" alt="">
-        </div> 
-        <div class="col d-flex align-items-center">
-          <p>Hoodie med snöre - 100 kr</p>
-        </div>
-      </div>
-      */
 
       let row = document.createElement('div');
       row.className = "row p-2";
